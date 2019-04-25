@@ -280,7 +280,7 @@ Section OutputRelations.
     firstorder.
   Qed.
 
-  Hint Immediate rimpl_to_requiv requiv_to_rimpl1 requiv_to_rimpl2.
+  Hint Immediate rimpl_to_requiv requiv_to_rimpl1 requiv_to_rimpl2 : core.
 
   (* we define an ordering over relations ---> in a natural way for relations,
   but the definition is equivalent to starting with equivalence [<--->] and
@@ -458,7 +458,7 @@ Section OutputRelations.
     apply and_then_equiv_cong; auto.
   Qed.
 
-  Hint Constructors seq_star.
+  Hint Constructors seq_star : core.
 
   Global Instance seq_star_respectful :
     Proper (rimpl ==> rimpl) (seq_star (A:=A) (T:=T)).
@@ -474,7 +474,7 @@ Section OutputRelations.
     eapply seq_star_respectful; eauto.
   Qed.
 
-  Hint Constructors bind_star.
+  Hint Constructors bind_star : core.
 
   Global Instance bind_star_respectful :
     Proper (pointwise_relation _ rimpl ==> eq ==> rimpl) (bind_star (A:=A) (T:=T)).
@@ -717,7 +717,7 @@ Section OutputRelations.
   Definition rimpl_refl A B T (r: relation A B T) : r ---> r := ltac:(reflexivity).
   Definition requiv_refl A B T (r: relation A B T) : r <---> r := ltac:(reflexivity).
 
-  Hint Resolve rimpl_refl requiv_refl.
+  Hint Resolve rimpl_refl requiv_refl : core.
 
   Theorem bind_dist_r A B C T1 T2 (r1 r2: relation A B T1) (r3: T1 -> relation B C T2) :
     and_then (r1 + r2) r3 <---> (and_then r1 r3) + (and_then r2 r3).
@@ -781,7 +781,7 @@ Section OutputRelations.
     t; destruct_return; t.
   Qed.
 
-  Hint Constructors seq_plus.
+  Hint Constructors seq_plus : core.
 
   Theorem plus_one `(r: relation A A T) :
     r ---> seq_plus r.
@@ -1046,7 +1046,7 @@ Section OutputRelations.
       r y Err ->
       seq_star_r r x Err.
 
-  Hint Constructors seq_star_r.
+  Hint Constructors seq_star_r : core.
 
   Lemma seq_star_r_one_more_valid_left {A T} (r: relation A A T) x y z o1 o2:
     r x (Val y o1) ->
@@ -1085,7 +1085,7 @@ Section OutputRelations.
     induction IHHstar; t.
   Qed.
 
-  Hint Resolve seq_star_r_one_more_valid_left.
+  Hint Resolve seq_star_r_one_more_valid_left : core.
 
   Theorem seq_star_lr A `(r: relation A A T) :
     seq_star r <---> seq_star_r r;; identity.
@@ -1111,7 +1111,7 @@ Section OutputRelations.
            eapply seq_star_rl_valid; eauto.
   Qed.
 
-  Hint Constructors bind_star_r.
+  Hint Constructors bind_star_r : core.
 
   Lemma bind_star_r_one_more_valid_left {A T} (r: T -> relation A A T) x y z o1 o2 o3:
     r o1 x (Val y o2) ->
@@ -1160,7 +1160,7 @@ Section OutputRelations.
     induction IHHstar; t.
   Qed.
 
-  Hint Resolve bind_star_r_one_more_valid_left.
+  Hint Resolve bind_star_r_one_more_valid_left : core.
 
   Theorem bind_star_lr A `(r: T -> relation A A T) (v:T) :
     bind_star r v <---> bind_star_r r v.

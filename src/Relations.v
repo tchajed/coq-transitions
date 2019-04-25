@@ -11,10 +11,8 @@ Generalizable All Variables.
 (* for compatibility with coq master *)
 Set Warnings "-undeclared-scope".
 
-Section OutputRelations.
+Section TransitionRelations.
 
-  (* an output relation: a heterogeneous relation from [A] to [B] that also
-  emits some value of type [T] *)
   Inductive Return (B T: Type) : Type :=
   | Val (b: B) (t: T)
   | Err.
@@ -172,14 +170,6 @@ Section OutputRelations.
 
   Definition rimpl {A B} {T} (r1 r2: relation A B T) :=
     forall x y, r1 x y -> r2 x Err \/ r2 x y.
-
-  Lemma rimpl_alt {A B} {T} (r1 r2: relation A B T) :
-    (forall a ret, ~ r2 a Err -> r1 a ret -> r2 a ret) ->
-    rimpl r1 r2.
-  Proof.
-    intros Halt x ret Hr1.
-    destruct (Classical_Prop.classic (r2 x Err)); auto.
-  Qed.
 
   Global Instance rimpl_preorder T : PreOrder (rimpl (A:=A) (B:=B) (T:=T)).
   split.
@@ -1288,7 +1278,7 @@ Section OutputRelations.
     t; destruct_return; t.
   Qed.
 
-End OutputRelations.
+End TransitionRelations.
 
 Module RelationNotations.
   (* Declare Scope relation_scope. *)

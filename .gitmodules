@@ -4,3 +4,6 @@
 [submodule "vendor/tactical"]
 	path = vendor/tactical
 	url = https://github.com/tchajed/coq-tactical.git
+[submodule "vendor/record-update"]
+	path = vendor/record-update
+	url = https://github.com/tchajed/coq-record-update.git

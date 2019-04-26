@@ -1,4 +1,4 @@
-From Transitions Require Import Relations Rewriting.
+From Transitions Require Import RelationDefs Rewriting.
 From Classes Require Import Classes.
 
 Import RelationNotations.

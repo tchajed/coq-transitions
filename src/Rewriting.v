@@ -1,5 +1,6 @@
 From Tactical Require Import Propositional.
-From Transitions Require Import Relations.
+
+From Transitions Require Import RelationDefs.
 
 Import RelationNotations.
 

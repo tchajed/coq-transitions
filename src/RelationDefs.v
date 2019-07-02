@@ -1304,7 +1304,7 @@ Module RelationNotations.
                              : relation_scope.
   Notation "'let!' x <- p1 ; p2" := (and_then p1 (fun x => p2))
                               (at level 20, x pattern, p1 at level 100, p2 at level 200, right associativity,
-                               format "'[' 'let!' x  <-  '[v    ' p1 ']' ; ']'  '/' p2")
+                               format "'[' 'let!'  x  <-  '[v    ' p1 ']' ; ']'  '/' p2")
                              : relation_scope.
   Ltac destruct_return :=
     match goal with

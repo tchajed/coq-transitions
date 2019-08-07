@@ -49,5 +49,26 @@ Proof.
   induction H0; try congruence; eauto.
 Qed.
 
+Instance nonError_puts `(f: A -> A) :
+  NonError (puts f).
+Proof.
+  unfold NonError, not, puts; intros.
+  congruence.
+Qed.
+
+Instance nonError_reads `(f: A -> T) :
+  NonError (reads f).
+Proof.
+  unfold NonError, not, reads; intros.
+  congruence.
+Qed.
+
+Instance nonError_none :
+  @NonError A A T none.
+Proof.
+  unfold NonError, not, none; intros.
+  auto.
+Qed.
+
 Definition rel_apply `(r:relation A B T) :
   A -> B -> T -> Prop := fun s s' v => r s (Val s' v).

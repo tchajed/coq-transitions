@@ -83,12 +83,12 @@ Proof.
              end;
       try congruence.
     left; apply det_complete; congruence.
-    Grab Existential Variables.
+    Unshelve.
     congruence.
     congruence.
 Qed.
 
-Instance error_Deterministic :
+Instance error_Deterministic A B T :
   Deterministic (@error A B T) (fun _ => Err).
 Proof.
   intros.

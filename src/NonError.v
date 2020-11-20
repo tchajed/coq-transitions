@@ -25,7 +25,7 @@ Proof.
   (intuition idtac); propositional; eauto.
 Qed.
 
-Instance nonError_equiv :
+Instance nonError_equiv A B T :
   Proper (@requiv A B T ==> iff) NonError.
 Proof.
   firstorder.
@@ -63,7 +63,7 @@ Proof.
   congruence.
 Qed.
 
-Instance nonError_none :
+Instance nonError_none A T :
   @NonError A A T none.
 Proof.
   unfold NonError, not, none; intros.

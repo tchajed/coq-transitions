@@ -946,7 +946,7 @@ Section TransitionRelations.
            do 2 eexists; split; eauto.
            eapply bind_star_one_more_err. eauto.
       * t.
-        ** set (ret := @Err A unit). replace Err with ret in H at 1; eauto.
+        ** set (ret := @Err A unit). replace (@Err A unit) with ret in H at 1; eauto.
            remember ret as ret' eqn:Heq. unfold ret in Heq.
            induction H.
            *** congruence.
@@ -986,7 +986,7 @@ Section TransitionRelations.
         do 2 eexists; split; eauto.
         eapply seq_star_one_more_err. eauto.
       * t.
-        ** set (ret := @Err A unit). replace Err with ret in H at 1; eauto.
+        ** set (ret := @Err A unit). replace (@Err A unit) with ret in H at 1; eauto.
            remember ret as ret' eqn:Heq. unfold ret in Heq.
            induction H.
            *** congruence.
